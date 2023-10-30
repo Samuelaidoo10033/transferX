@@ -1,0 +1,56 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
+
+/**
+ *
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $type
+ * @property string $currency
+ * @property string $country
+ * @property string $account_name
+ * @property string $account_number
+ * @property string $account_provider
+ * @property string $bank_code
+ * @property array|null $metadata
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
+ *
+ */
+
+class Accounts extends Model
+{
+    use HasFactory, SoftDeletes;
+
+    protected $fillable = [
+        'type',
+        'currency',
+        'account_provider',
+        'bank_code',
+        'account_number',
+        'account_name',
+        'country',
+    ];
+
+    protected $hidden = [
+        'deleted_at'
+    ];
+
+    protected $casts = [
+        'metadata' => 'array',
+    ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+}

@@ -1,0 +1,15 @@
+div#nova .bg-grad-sidebar{
+    background-image: none;
+    background-color: #0e1b4f !important;
+    color:white !important;
+}
+.bg-blue{
+    background-color: #0e1b4f !important;
+}
+div#nova .bg-logo{
+    background-image: none;
+    background-color: #FFFFFF !important;
+    color:white !important;
+}
+
+
